@@ -1,6 +1,9 @@
 import React from 'react';
 import { Modal, ModalBody } from 'reactstrap';
 import Button from 'react-bootstrap/Button';
+import ToggleButton from 'react-bootstrap/ToggleButton';
+import ToggleButtonGroup from 'react-bootstrap/ToggleButtonGroup';
+import Row from 'react-bootstrap/Row';
 import Web3 from 'web3';
 import isEmpty from 'lodash/isEmpty';
 
@@ -9,6 +12,11 @@ import Loading from '../Loading';
 import contractProvider from '../../utils/web3DataProvider';
 import { registerEvent } from '../../api/googleAnalytics';
 import { BUY_ZAP, INITIATE_PURCHASE } from '../../constants/googleAnalytics';
+import {
+  fetchRequest,
+  buildOptions,
+  checkResponse
+} from '../../api/apiHelpers';
 
 class LenderBuyButton extends React.Component {
   constructor(props) {
@@ -18,6 +26,7 @@ class LenderBuyButton extends React.Component {
       value: '',
       account: null,
       showLoader: false,
+      gasMode: 'average',
       errorMessage: '',
       depositTxHash: '',
       web3: null
@@ -25,11 +34,13 @@ class LenderBuyButton extends React.Component {
   }
 
   async getGas() {
-    const res = await fetch('https://ethgasstation.info/json/ethgasAPI.json');
-    const response = await res.json();
-    const avgGasGwei = (response.average / 10) * 1000000000;
-    console.log(`the Gas from the gas module2 is ${avgGasGwei}`);
-    this.setState({ gasValue: avgGasGwei });
+    const response = await fetchRequest(
+      'https://ethgasstation.info/json/ethgasAPI.json',
+      () => buildOptions()
+    ).then(checkResponse('Failed to get gas from Gas Station'));
+    const { gasMode } = this.state;
+    const gasValue = (response[`${gasMode}`] / 10) * 1000000000;
+    this.setState({ gasValue });
   }
 
   handleChange = event => {
@@ -106,19 +117,17 @@ class LenderBuyButton extends React.Component {
     }
   };
 
+  setGasMode = async gasMode => {
+    await this.setState({ gasMode });
+  };
+
   async initialize() {
     try {
-      await window.ethereum.enable();
-      const account = window.web3.eth.defaultAccount;
-      this.setState({
-        account
-      });
+      const [account] = await window.ethereum.enable();
+      this.setState({ account });
     } catch (error) {
       console.error(error);
-      this.setState({
-        errorMessage:
-          'Error connecting to MetaMask! Please try reloading the page...'
-      });
+      alert('You will need to connect web3 wallet');
     }
   }
 
@@ -142,22 +151,57 @@ class LenderBuyButton extends React.Component {
                   style={
                     value && value.length > 3
                       ? {
-                          width: `${70 + value.length * 10}px`
+                          width: `${80 + value.length * 20}px`
                         }
-                      : {}
+                      : {
+                          width: '80px'
+                        }
                   }
                 />
                 <p className="buytext pt-4 ml-2">ETH</p>
               </div>
+              <Row className="justify-content-center py-3">
+                Select Transaction Speed:{' '}
+              </Row>
+              <Row className="justify-content-center py-2">
+                <ToggleButtonGroup
+                  type="radio"
+                  name="gasOptions"
+                  value={this.state.gasMode}
+                  onChange={this.setGasMode}
+                >
+                  <ToggleButton
+                    variant="outline-success"
+                    size="lg"
+                    value="average"
+                  >
+                    Slow
+                  </ToggleButton>
+                  <ToggleButton
+                    variant="outline-success"
+                    size="lg"
+                    value="fast"
+                  >
+                    Average
+                  </ToggleButton>
+                  <ToggleButton
+                    size="lg"
+                    value="fastest"
+                    variant="outline-success"
+                  >
+                    Fast
+                  </ToggleButton>
+                </ToggleButtonGroup>
+              </Row>
             </div>
             <div className="my-4 row justify-content-center">
               <input
                 type="submit"
-                className="font20 mx-3 btn btn-dark btn-large shadow px-4 py-2 "
-                value="Buy"
+                className="font20 mx-3 btn btn-outline-success btn-large shadow px-4 py-2"
+                value="Confirm"
               />
               <div
-                className="font20 btn btn-outline-dark btn-large shadow px-4 py-2 "
+                className="font20 btn btn-outline-dark btn-large shadow px-4 py-2 mx-3"
                 onClick={this.toggle}
               >
                 Cancel

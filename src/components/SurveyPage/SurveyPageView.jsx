@@ -50,8 +50,7 @@ const SurveyPageView = props => {
               registerEvent({
                 category: GENERATE_ZAP,
                 action: SURVEY_PAGE
-              })
-            }
+              })}
           >
             Don&apos;t see your Zap? Submit a request and we will create one!
           </Button>
@@ -66,8 +65,8 @@ const SurveyPageView = props => {
             </p>
             <p>
               Please note that we are not licensed financial advisors under any
-              law. Please Consult your own independent investment advisor before
-              making any Investment Decisions
+              law. Please consult your own independent investment advisor before
+              making any investment decisions.
             </p>
           </h5>
         </Row>

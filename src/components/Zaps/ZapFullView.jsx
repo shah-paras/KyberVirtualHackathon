@@ -69,7 +69,6 @@ class ZapFullView extends Component {
                       >
                         View Tutorial
                       </Button>
-                      {/* eslint-disable-next-line no-nested-ternary */}
                       <LenderBuyButton name={name} isOrderable={isOrderable} />
                       <this.customToggle eventKey="0">
                         More info
@@ -104,7 +103,6 @@ class ZapFullView extends Component {
                   </Accordion>
                 ) : (
                   <div className="row justify-content-center my-4">
-                    {/* eslint-disable-next-line no-nested-ternary */}
                     <LenderBuyButton name={name} isOrderable={isOrderable} />
                     <div className="col-12 col-md-12 col-lg-12 text-center">
                       <h4 style={{ color: 'black' }}>
@@ -112,11 +110,8 @@ class ZapFullView extends Component {
                       </h4>
                       <h4 style={{ color: 'black' }}>
                         {' '}
-                        In the meantime, check out{' '}
-                        <a href="/zaps/lender"> Lender</a>,{' '}
-                        <a href="/zaps/moderatebull"> Moderate Bull</a>,{' '}
-                        <a href="/zaps/doublebull"> Double Bull</a> or
-                        <a href="zaps/ETHMaximalist"> ETH Maximalist</a>.
+                        In the meantime, check out our available Zaps{' '}
+                        <a href="/availablezaps">here</a>.
                       </h4>
                     </div>
                   </div>

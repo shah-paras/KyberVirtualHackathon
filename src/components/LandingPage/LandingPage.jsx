@@ -21,7 +21,11 @@ const LandingPage = () => (
     <FAQView />
     <div className="text-center py-1 mb-2">
       <h4 className="pt-1">DeFiZap</h4>
-      <div className="text-muted">All Rights Reserved</div>
+      <div className="text-muted">
+        Please note that DeFiZap is not a licensed financial advisor under any
+        law. Please consult your own independent investment advisor before
+        making any investment decisions.
+      </div>
     </div>
   </Container>
 );

@@ -14,7 +14,7 @@ const WhyUseDeFiZap = () => (
     </Row>
     <Row className="justify-content-center text-center">
       <Col sm md lg>
-        <img src={SaveTime} width="137px" alt="Save Time" />
+        <img src={SaveTime} width="94px" alt="Save Time" />
         <h5>Save Time</h5>
         <p>
           Zap is a smart contract that auto-spreads incoming deposits across

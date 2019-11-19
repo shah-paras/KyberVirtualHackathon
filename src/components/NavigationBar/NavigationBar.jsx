@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
@@ -13,15 +14,18 @@ const NavigationBar = props => {
         variant="dark"
         style={{ width: '200%', marginLeft: '-50%', justifyContent: 'center' }}
       >
-        <Navbar.Brand>
+        <Navbar.Brand className={styles.anchorTag}>
+          <span role="img">🏆</span>
           <a
             href="https://blog.kyber.network/kyberdefi-hackathon-meet-the-winners-bea5bc9ec983"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ color: 'black' }}
+            style={{ color: 'white', textDecoration: 'underline' }}
+            id="anchorTag"
           >
-            🏆DeFiZap wins #KyberDeFi Hackathon🏆
+            DeFiZap wins #KyberDeFi Hackathon
           </a>
+          <span role="img">🏆</span>
         </Navbar.Brand>
       </Navbar>
       <div className="mt-1 mb-3">

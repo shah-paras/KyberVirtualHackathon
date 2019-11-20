@@ -123,8 +123,9 @@ class LenderBuyButton extends React.Component {
 
   async initialize() {
     try {
-      const [account] = await window.ethereum.enable();
-      this.setState({ account });
+      await window.ethereum.enable();
+      const accounts = await window.web3.eth.getAccounts();
+      this.setState({ account: accounts[0] });
     } catch (error) {
       console.error(error);
       alert('You will need to connect web3 wallet');

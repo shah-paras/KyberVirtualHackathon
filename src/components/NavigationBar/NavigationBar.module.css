@@ -5,15 +5,3 @@
 .logoPadding > img {
     padding: 0px 5px 0px 10px;
 }
-
-.anchorTag a:hover {
-    text-decoration: none!important;
-}
-
-#anchorTag a {
-    text-decoration: underline!important;
-}
-
-#anchorTag a:hover {
-    text-decoration: none!important;
-}

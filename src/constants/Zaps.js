@@ -5,7 +5,7 @@ const Zaps = {
     isOrderable: true,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 90
       },
       {
@@ -16,10 +16,10 @@ const Zaps = {
     description: {
       textQuestion: 'What does this Zap do?',
       textAnswer: [
-        'Lender Zap allocates incoming deposits 90% to cDAI and 10% to dLETH2x.',
-        'Therefore, if you send 1 ETH to Lender.DeFiZap.eth, or buy from our website, 0.9 of your worth will go towards investing in Compound.Finance while 0.1 of your ETH will be used to open a Perpetual ETH Long with 2x leverage.',
-        "Lender's Zap is interesting because, within a year, the interest generated from cDAI could completely cover your margin trade purchase. Think of it as trading with your future interest earned.",
-        'After sending your ETH, you will immediately receive allocated tokens (cDAI+dLETH2x) which track your DAI lending balance + margin trade position. Once you receive these tokens you can visit Compound.Finance to view/withdraw interest earned and Fulcrum.Trade to view your ROI/ close position on dLETH2x.'
+        'Lender Zap allocates incoming deposits 90% to cSAI and 10% to dLETH2x.',
+        'Therefore, if you send 1 ETH to this Lender.DeFiZap.eth, or buy from our website, 0.9 of your worth will go towards investing in Compound.Finance while 0.1 of your ETH will be used to open a Perpetual ETH Long with 2x leverage.',
+        "Lender's Zap is interesting because, within a year, the interest generated from cSAI could completely cover your margin trade purchase. Think of it as trading with your future interest earned.",
+        'After sending your ETH, you will immediately receive allocated tokens (cSAI+dLETH2x) which track your DAI lending balance + margin trade position. Once you receive these tokens you can visit Compound.Finance to view/withdraw interest earned and Fulcrum.Trade to view your ROI/ close position on dLETH2x.'
       ],
       textLink: [
         {
@@ -149,21 +149,21 @@ const Zaps = {
     isOrderable: true,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 50
       },
       {
-        name: 'iDAI',
+        name: 'iSAI',
         percent: 50
       }
     ],
     description: {
       textQuestion: 'What does SuperSaver Zap do?',
       textAnswer: [
-        'Your deposit is automatically allocated 50% to cDAI and 50% to iDAI which represent your DAI supply balances on Compound and Fulcrum',
+        'Your deposit is automatically allocated 50% to cSAI and 50% to iSAI which represent your DAI supply balances on Compound and Fulcrum',
         'For example, if you send 1 ETH to SuperSaver.DeFiZap.Eth:',
-        '- 0.5 of your ETH will be converted to cDAI.',
-        '- 0.5 of your ETH will be converted to iDAI.',
+        '- 0.5 of your ETH will be converted to cSAI.',
+        '- 0.5 of your ETH will be converted to iSAI.',
         'After sending your deposit, you will immediately receive allocated tokens.',
         "Soon you will be able to manage these tokens right from DeFiZap Dashboard but for now you can visit Compound + Fulcrum to see how much interest you've earned or make a withdrawal."
       ],
@@ -189,7 +189,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 90
       },
       {
@@ -204,7 +204,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 90
       },
       {
@@ -219,7 +219,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 50
       },
       {
@@ -238,7 +238,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 50
       },
       {
@@ -257,7 +257,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 20
       },
       {
@@ -276,7 +276,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 20
       },
       {
@@ -314,7 +314,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 25
       },
       {
@@ -337,7 +337,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 25
       },
       {
@@ -356,7 +356,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 50
       },
       {
@@ -390,7 +390,7 @@ const Zaps = {
     isOrderable: false,
     components: [
       {
-        name: 'cDAI',
+        name: 'cSAI',
         percent: 50
       },
       {

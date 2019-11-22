@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
@@ -11,7 +11,7 @@ import BuyButton from '../BuyButton/BuyButtonContainer';
 import styles from './Zaps.module.css';
 import '../../App.css';
 
-class ZapFullView extends Component {
+class ZapFullView extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {};

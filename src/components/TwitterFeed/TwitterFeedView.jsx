@@ -27,22 +27,21 @@ const settings = {
 const TwitterFeedView = props => {
   return (
     <div className="mb-2 pb-2">
-    <Slider {...settings}>
-      {Object.values(tweetList).map(tweet => (
-        <div className="mx-2 px-2">
-          <TwitterTweetEmbed
-            key={tweet}
-            tweetId={tweet}
-            options={{
-              cards: 'hidden',
-              width: 430,
-              maxWidth: 430
-            }}
-            placeholder={<Spinner animation="grow" variant="primary" />}
-          />
-        </div>
-      ))}
-    </Slider>
+      <Slider {...settings}>
+        {Object.values(tweetList).map(tweet => (
+          <div key={tweet} className="mx-2 px-2 mb-3">
+            <TwitterTweetEmbed
+              tweetId={tweet}
+              options={{
+                cards: 'hidden',
+                width: 430,
+                maxWidth: 430
+              }}
+              placeholder={<Spinner animation="grow" variant="primary" />}
+            />
+          </div>
+        ))}
+      </Slider>
     </div>
   );
 };

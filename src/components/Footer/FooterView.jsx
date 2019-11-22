@@ -33,12 +33,9 @@ const FooterView = () => (
       </Col>
       <Col sm md lg className="p-1">
         <img src={uniswap} width="60px" alt="uniswap" />
-      </Col>{' '}
+      </Col>
       <Col sm md lg className="p-1">
         <img src={tokensets} width="100px" alt="tokensets" />
-      </Col>
-      <Col sm md lg className="p-1 m-1">
-        <img src={uniswap} width="60px" alt="uniswap" />
       </Col>
     </Row>
   </>

@@ -53,34 +53,38 @@ class LenderBuyButton extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+    this.toggle();
     registerEvent({
       category: INITIATE_PURCHASE,
       action: this.props.name
     });
-    await this.initialize();
-    let web3;
-    if (
-      typeof window.ethereum !== 'undefined' ||
-      typeof window.web3 !== 'undefined'
-    ) {
-      const provider = window.ethereum || window.web3.currentProvider;
-      web3 = new Web3(provider);
-    }
-    const networkId = await web3.eth.net.getId();
-    await this.getGas();
-    if (networkId !== 1) {
-      alert(
-        'Sorry, you need to be on the Ethereum MainNet to use our services.'
-      );
-    } else {
-      const { contractAbi, contractAddress, gas, gasPrice } = contractProvider(
-        this.props.name
-      );
-      const valueToInvest = this.state.value;
-      const contract = new web3.eth.Contract(contractAbi, contractAddress);
-      this.setState({ showLoader: true });
-      let tx;
-      try {
+    try {
+      await this.initialize();
+      let web3;
+      if (
+        typeof window.ethereum !== 'undefined' ||
+        typeof window.web3 !== 'undefined'
+      ) {
+        const provider = window.ethereum || window.web3.currentProvider;
+        web3 = new Web3(provider);
+      }
+      const networkId = await web3.eth.net.getId();
+      await this.getGas();
+      if (networkId !== 1) {
+        alert(
+          'Sorry, you need to be on the Ethereum MainNet to use our services.'
+        );
+      } else {
+        const {
+          contractAbi,
+          contractAddress,
+          gas,
+          gasPrice
+        } = contractProvider(this.props.name);
+        const valueToInvest = this.state.value;
+        const contract = new web3.eth.Contract(contractAbi, contractAddress);
+        this.setState({ showLoader: true });
+        let tx;
         if (this.props.name === 'Lender') {
           tx = await contract.methods.SafeNotSorryZapInvestment();
         } else if (this.props.name === 'ETH Maximalist') {
@@ -110,10 +114,10 @@ class LenderBuyButton extends React.Component {
             );
             this.setState({ showLoader: false });
           });
-      } catch (error) {
-        console.log(error);
+        console.log(tx);
       }
-      console.log(tx);
+    } catch (error) {
+      console.log(error);
     }
   };
 

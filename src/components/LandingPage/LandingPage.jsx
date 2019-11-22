@@ -7,7 +7,6 @@ import NavigationBar from '../NavigationBar';
 import WhyUseDeFiZap from './WhyUseDeFiZap';
 import AvailableZaps from './AvailableZapsView';
 import Hero from './Hero';
-import FAQView from '../Faq/FaqView';
 import Footer from '../Footer';
 import TwitterFeed from '../TwitterFeed';
 
@@ -15,7 +14,7 @@ const LandingPage = () => (
   <>
     <Navbar bg="primary" variant="dark" className={styles.bannerTop}>
       <Navbar.Brand className={styles.anchorTag}>
-        <span role="img">🏆</span>
+        🏆
         <a
           href="https://blog.kyber.network/kyberdefi-hackathon-meet-the-winners-bea5bc9ec983"
           target="_blank"
@@ -26,7 +25,7 @@ const LandingPage = () => (
         >
           DeFiZap wins #KyberDeFi Hackathon
         </a>
-        <span role="img">🏆</span>
+        🏆
       </Navbar.Brand>
     </Navbar>
     <Container>

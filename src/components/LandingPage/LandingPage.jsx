@@ -9,6 +9,7 @@ import AvailableZaps from './AvailableZapsView';
 import Hero from './Hero';
 import FAQView from '../Faq/FaqView';
 import Footer from '../Footer';
+import TwitterFeed from '../TwitterFeed';
 
 const LandingPage = () => (
   <>
@@ -21,6 +22,7 @@ const LandingPage = () => (
           rel="noopener noreferrer"
           style={{ color: 'white', textDecoration: 'underline' }}
           id="anchorTag"
+          className="h6"
         >
           DeFiZap wins #KyberDeFi Hackathon
         </a>
@@ -34,9 +36,9 @@ const LandingPage = () => (
       <AvailableZaps />
       <Footer />
       <Container>
-        <h2 className="pt-1 pb-1 text-center">Frequently Asked Questions</h2>
+        <h2 className="pt-1 pb-1 text-center">Fan Love</h2>
       </Container>
-      <FAQView />
+      <TwitterFeed />
       <div className="text-center py-1 mb-2">
         <h4 className="pt-1">DeFiZap</h4>
         <div className="text-muted">

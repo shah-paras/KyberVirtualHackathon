@@ -1,11 +1,14 @@
 export const LENDER_CONTRACT_ADDRESS =
-  '0xe7e5ff8f7745c13bef49d6fddbc6c208e99d5244';
+  'lender.defizap.eth';
 
 export const ETHMAXIMALIST_CONTRACT_ADDRESS =
-  '0xc36fe594dB560bFDE1BDf5d6b40a7a775d702a1C';
+  'ethmax.defizap.eth';
 
 export const MODERATE_BULL_CONTRACT_ADDRESS =
-  '0x9DC5Ee55De10f9345e9f58EA1539320B9644B2f4';
+  'moderatebull.defizap.eth';
 
-export const SHORT_TERM_BULL_CONTRACT_ADDRESS =
-  '0x2e213129b76d4b12abf590bf18874362ce0976dc';
+export const DOUBLE_BULL_CONTRACT_ADDRESS =
+  'doublebull.defizap.eth';
+
+export const SUPER_SAVER_CONTRACT_ADDRESS =
+  'supersaver.defizap.eth';

@@ -9,12 +9,12 @@ import NonCustodial from '../../assets/non-custodial.svg';
 
 const WhyUseDeFiZap = () => (
   <Container>
-    <Row className="justify-content-center pt-5 pb-3 mb-3">
+    <Row className="justify-content-center pt-5 pb-0">
       <h2>Why Use DeFiZap?</h2>
     </Row>
     <Row className="justify-content-center text-center">
       <Col sm md lg>
-        <img src={SaveTime} width="137px" alt="Save Time" />
+        <img src={SaveTime} width="94px" alt="Save Time" />
         <h5>Save Time</h5>
         <p>
           Zap is a smart contract that auto-spreads incoming deposits across

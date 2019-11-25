@@ -6,6 +6,9 @@
 .pnp.js
 /v6
 
+# yarn cache
+/v6
+
 # testing
 /coverage
 

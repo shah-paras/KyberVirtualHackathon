@@ -16,16 +16,18 @@ const ZapListView = () => {
   return (
     <Container>
       <NavigationBar />
-      {Object.values(Zaps).map(zap => (
-        <ZapFullView
-          key={zap.name}
-          name={zap.name}
-          components={zap.components}
-          isOrderable={zap.isOrderable}
-          description={zap.description}
-          id={zap.id}
-        />
-      ))}
+      {Object.values(Zaps)
+        .filter(zap => zap.isOrderable === true)
+        .map(zap => (
+          <ZapFullView
+            key={zap.name}
+            name={zap.name}
+            components={zap.components}
+            isOrderable={zap.isOrderable}
+            description={zap.description}
+            id={zap.id}
+          />
+        ))}
       <div className="container">
         <div className="row justify-content-center my-1">
           <div className="col-12 col-md-12 col-lg-12 text-center">
@@ -49,8 +51,7 @@ const ZapListView = () => {
                 registerEvent({
                   category: GENERATE_ZAP,
                   action: INDIVIDUAL_ZAP_PAGE
-                })
-              }
+                })}
             >
               Don&apos;t see your Zap? Submit a request and we will create one!
             </Button>

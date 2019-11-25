@@ -14,7 +14,7 @@ const LandingPage = () => (
   <>
     <Navbar bg="primary" variant="dark" className={styles.bannerTop}>
       <Navbar.Brand className={styles.anchorTag}>
-        🏆
+        <span role="img" aria-label="">🏆</span>
         <a
           href="https://blog.kyber.network/kyberdefi-hackathon-meet-the-winners-bea5bc9ec983"
           target="_blank"
@@ -25,7 +25,7 @@ const LandingPage = () => (
         >
           DeFiZap wins #KyberDeFi Hackathon
         </a>
-        🏆
+        <span role="img" aria-label="">🏆</span>
       </Navbar.Brand>
     </Navbar>
     <Container>

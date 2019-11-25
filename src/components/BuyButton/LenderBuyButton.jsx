@@ -66,6 +66,8 @@ class LenderBuyButton extends React.Component {
       web3 = new Web3(provider);
     }
     const networkId = await web3.eth.net.getId();
+    let ens = web3.eth.ens;
+
     await this.getGas();
     if (networkId !== 1) {
       alert(
@@ -75,8 +77,10 @@ class LenderBuyButton extends React.Component {
       const { contractAbi, contractAddress, gas, gasPrice } = contractProvider(
         this.props.name
       );
+      console.log(contractAddress);
+      const newAddress = await ens.getAddress(contractAddress);
       const valueToInvest = this.state.value;
-      const contract = new web3.eth.Contract(contractAbi, contractAddress);
+      const contract = new web3.eth.Contract(contractAbi, newAddress);
       this.setState({ showLoader: true });
       let tx;
       try {
@@ -150,11 +154,11 @@ class LenderBuyButton extends React.Component {
                   style={
                     value && value.length > 3
                       ? {
-                          width: `${80 + value.length * 20}px`
-                        }
+                        width: `${80 + value.length * 20}px`
+                      }
                       : {
-                          width: '80px'
-                        }
+                        width: '80px'
+                      }
                   }
                 />
                 <p className="buytext pt-4 ml-2">ETH</p>
@@ -234,16 +238,16 @@ class LenderBuyButton extends React.Component {
             Buy
           </Button>
         ) : (
-          <Button
-            onClick={() => this.setState({ open: true })}
-            disabled={!isOrderable}
-            variant="outline-success"
-            size="lg"
-            className="m-2"
-          >
-            Coming Soon
+            <Button
+              onClick={() => this.setState({ open: true })}
+              disabled={!isOrderable}
+              variant="outline-success"
+              size="lg"
+              className="m-2"
+            >
+              Coming Soon
           </Button>
-        )}
+          )}
         {this.renderModal()}
       </div>
     );

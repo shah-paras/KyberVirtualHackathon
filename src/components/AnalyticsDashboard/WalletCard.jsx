@@ -18,8 +18,7 @@ class WalletCard extends React.Component {
     
       componentDidMount = async () => {
         const comp = this;
-        if (typeof this.state.web3.givenProvider === 'undefined'
-            || typeof this.state.web3.givenProvider.selectedAddress === 'undefined') {
+        if (!this.providerExists()) {
             if (typeof window.ethereum !== 'undefined') {
                 // connect via metamask...
                 // @todo connect via other provider?
@@ -32,18 +31,32 @@ class WalletCard extends React.Component {
                 });
             }
         }
-        
-        console.log('selectedAddress:' + this.state.web3.givenProvider.selectedAddress);
-        if (typeof this.state.web3.givenProvider !== 'undefined'
-            // sometimes selectedAddress is set undefined...sometimes null... :|
-            && typeof this.state.web3.givenProvider.selectedAddress !== 'undefined'
-            && this.state.web3.givenProvider.selectedAddress !== null) {
-            let balance = await this.state.web3.eth.getBalance(web3.givenProvider.selectedAddress);
+        setTimeout(this.updateWallet, 1000);
+      }
+
+      async updateWallet() {
+        if (this.providerExists() && this.selectedAddressExists()) {
+            let balance = await this.getSelectedBalance();
             this.setState({
                 selectedAddress: web3.givenProvider.selectedAddress,
                 currentBalance: web3.utils.fromWei(balance, 'ether')
             });
         }
+        setTimeout(this.updateWallet, 1000);
+      }
+
+      providerExists() {
+        return typeof this.state.web3 !== 'undefined' 
+            && typeof this.state.web3.givenProvider !== 'undefined';
+      }
+
+      selectedAddressExists() {
+          return typeof this.state.web3.givenProvider.selectedAddress !== 'undefined'
+            && this.state.web3.givenProvider.selectedAddress !== null;
+      }
+
+      async getSelectedBalance() {
+          return this.state.web3.eth.getBalance(web3.givenProvider.selectedAddress);
       }
     
       render() {

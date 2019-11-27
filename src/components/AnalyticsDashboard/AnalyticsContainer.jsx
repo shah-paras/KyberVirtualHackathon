@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
 import autobind from 'react-autobind';
-import { Main } from '@mydefi/ui';
+import { Main, Table, TableRow } from '@mydefi/ui';
 import WalletCard from './WalletCard';
+import MakerCard from './MakerCard';
 
 class AnalyticsContainer extends PureComponent {
   constructor(props) {
@@ -17,7 +18,16 @@ class AnalyticsContainer extends PureComponent {
   render() {
     return (
         <Main>
-            <WalletCard />
+          <Table>
+            <TableRow data={[
+              <WalletCard />
+            ]}>
+            </TableRow>
+            <TableRow data={[
+              <MakerCard />
+            ]}>
+            </TableRow>
+          </Table>
         </Main>
     );
   }

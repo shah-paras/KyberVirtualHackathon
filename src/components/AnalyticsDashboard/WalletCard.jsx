@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Text } from '@mydefi/ui';
-import autobind from 'react-autobind';
+// import autobind from 'react-autobind';
 import web3 from '../../web3/web3';
 import { Colors } from "@mydefi/ui"; 
 import Web3 from 'web3';
@@ -13,7 +13,7 @@ class WalletCard extends React.Component {
             selectedAddress: '0x0',
             currentBalance: '0'
         };
-        autobind(this);
+        // autobind(this);
       }
     
       componentDidMount = async () => {
@@ -34,7 +34,7 @@ class WalletCard extends React.Component {
         setTimeout(this.updateWallet, 1000);
       }
 
-      async updateWallet() {
+      updateWallet = async  () => {
         if (this.providerExists() && this.selectedAddressExists()) {
             let balance = await this.getSelectedBalance();
             this.setState({
@@ -45,17 +45,17 @@ class WalletCard extends React.Component {
         setTimeout(this.updateWallet, 1000);
       }
 
-      providerExists() {
+      providerExists = () => {
         return typeof this.state.web3 !== 'undefined' 
             && typeof this.state.web3.givenProvider !== 'undefined';
       }
 
-      selectedAddressExists() {
+      selectedAddressExists = () => {
           return typeof this.state.web3.givenProvider.selectedAddress !== 'undefined'
             && this.state.web3.givenProvider.selectedAddress !== null;
       }
 
-      async getSelectedBalance() {
+      getSelectedBalance = async () => {
           return this.state.web3.eth.getBalance(web3.givenProvider.selectedAddress);
       }
     

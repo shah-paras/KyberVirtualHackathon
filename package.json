@@ -3,13 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@dydxprotocol/solo": "^0.28.0",
     "@makerdao/dai": "^0.23.0-rc.1",
     "@mydefi/ui": "^0.1.24",
+    "augur.js": "^6.7.0-1",
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "connected-react-router": "^6.5.2",
     "history": "^4.10.1",
     "lodash": "^4.17.15",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-autobind": "^1.0.6",
     "react-bootstrap": "^1.0.0-beta.14",
@@ -27,6 +30,7 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
+    "synthetix-js": "^2.14.0",
     "web3": "^1.2.1"
   },
   "devDependencies": {
@@ -36,8 +40,7 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-config-react": "^1.1.7",
     "eslint-plugin-prettier": "^3.0.1",
-    "prettier": "^1.16.4",
-    "prop-types": "^15.7.2"
+    "prettier": "^1.16.4"
   },
   "scripts": {
     "build": "react-scripts build",

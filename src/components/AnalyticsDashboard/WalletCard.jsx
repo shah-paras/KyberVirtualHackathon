@@ -1,74 +1,58 @@
 import React from 'react';
-import { Card, Text } from '@mydefi/ui';
-// import autobind from 'react-autobind';
+import { Card, Text, Colors } from '@mydefi/ui';
+import PropTypes from 'prop-types';
 import web3 from '../../web3/web3';
-import { Colors } from "@mydefi/ui"; 
-import Web3 from 'web3';
 
 class WalletCard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            web3,
-            selectedAddress: '0x0',
-            currentBalance: '0'
-        };
-        // autobind(this);
-      }
-    
-      componentDidMount = async () => {
-        const comp = this;
-        if (!this.providerExists()) {
-            if (typeof window.ethereum !== 'undefined') {
-                // connect via metamask...
-                // @todo connect via other provider?
-                window.ethereum.enable().then((accounts) => {
-                    comp.setState( {
-                        web3: new Web3(window.ethereum)
-                    });
-                }).catch( (error) => {
-                    console.log("Failure connecting to provider: " + error);
-                });
-            }
-        }
-        setTimeout(this.updateWallet, 1000);
-      }
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentBalance: '0'
+    };
+  }
 
-      updateWallet = async  () => {
-        if (this.providerExists() && this.selectedAddressExists()) {
-            let balance = await this.getSelectedBalance();
-            this.setState({
-                selectedAddress: web3.givenProvider.selectedAddress,
-                currentBalance: web3.utils.fromWei(balance, 'ether')
-            });
-        }
-        setTimeout(this.updateWallet, 1000);
-      }
+  componentDidMount = async () => {
+    await this.updateWallet();
+  };
 
-      providerExists = () => {
-        return typeof this.state.web3 !== 'undefined' 
-            && typeof this.state.web3.givenProvider !== 'undefined';
-      }
+  updateWallet = async () => {
+    if (this.selectedAddressExists()) {
+      const balance = await this.getSelectedBalance();
+      this.setState({
+        currentBalance: web3.utils.fromWei(balance, 'ether')
+      });
+    }
+    setTimeout(this.updateWallet, 1000);
+  };
 
-      selectedAddressExists = () => {
-          return typeof this.state.web3.givenProvider.selectedAddress !== 'undefined'
-            && this.state.web3.givenProvider.selectedAddress !== null;
-      }
+  selectedAddressExists = () => {
+    return (
+      typeof this.props.web3.givenProvider.selectedAddress !== 'undefined' &&
+      this.props.web3.givenProvider.selectedAddress !== null
+    );
+  };
 
-      getSelectedBalance = async () => {
-          return this.state.web3.eth.getBalance(web3.givenProvider.selectedAddress);
-      }
-    
-      render() {
-        return (
-            <Card title="Your wallet" 
-                description={ this.state.selectedAddress }>
-                <Text size="20px"
-                    color={Colors.textPrimary}
-                    >{ this.state.currentBalance } Ether</Text>
-            </Card>
-        );
-      }
+  getSelectedBalance = async () => {
+    return this.props.web3.eth.getBalance(web3.givenProvider.selectedAddress);
+  };
+
+  render() {
+    return (
+      <Card title="Your wallet" description={this.props.selectedAddress}>
+        <Text size="20px" color={Colors.textPrimary}>
+          {this.state.currentBalance} Ether
+        </Text>
+      </Card>
+    );
+  }
+}
+
+WalletCard.defaultProps = {
+  selectedAddress: '0x0'
+};
+
+WalletCard.propTypes = {
+  selectedAddress: PropTypes.string
 };
 
 export default WalletCard;

@@ -4,21 +4,17 @@ import PropTypes from 'prop-types';
 import { BZxJS } from '@bzxnetwork/bzx.js';
 
 function TokenList(tokens) {
-//   if (tokens) {
-//     return (
-//       <div key={tokens.token.address}>
-//         <Text size="20px" color={Colors.textPrimary}>
-//           Token Address: {tokens.token.address}
-//         </Text>
-//         <br />
-//         <Text size="20px" color={Colors.textSecondary}>
-//           Exchange: {tokens.exchange.address} <br />
-//           ETH Reserve: {tokens.ethReserve.amount} <br />
-//           Token Reserve: {tokens.tokenReserve.amount} <br />
-//         </Text>
-//       </div>
-//     );
-//   }
+  if (tokens && tokens.tokens) {
+    const tkns = tokens.tokens;
+    const items = tkns.map(token => (
+      <div key={token.address}>
+        <Text size="20px" color={Colors.textPrimary}>
+          {token.name} ({token.symbol}) at {token.address}
+        </Text>
+      </div>
+    ));
+    return <div>{items}</div>;
+  }
   return <div>No tokens available</div>;
 }
 
@@ -29,10 +25,9 @@ class FulcrumCard extends React.Component {
   }
 
   componentDidMount = async () => {
-    const networkId = this.props.web3.eth.net.getId();
+    const networkId = await this.props.web3.eth.net.getId();
     const bzx = new BZxJS(this.props.web3, { networkId });
     const tokens = await bzx.getTokenList();
-    console.log(`Got bzx token list: ${JSON.stringify(tokens)}`);
     this.setState({
       networkId,
       bzx,

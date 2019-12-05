@@ -15,8 +15,6 @@ class PoolTogetherCard extends React.Component {
 
   componentDidMount = async () => {
     const poolTogether = new this.props.web3.eth.Contract(ABI, ADDRESS);
-    const allMethods = Object.keys(poolTogether.methods);
-    console.log(`${allMethods}`);
     const info = await poolTogether.methods.getInfo().call();
     this.setState({
       poolTogether,

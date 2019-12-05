@@ -6,6 +6,7 @@ import web3 from '../../web3/web3';
 
 import CompoundCard from './CompoundCard';
 import DyDxCard from './DyDxCard';
+import FulcrumCard from './FulcrumCard';
 import MakerCard from './MakerCard';
 import PoolTogetherCard from './PoolTogetherCard';
 import SynthetixCard from './SynthetixCard';
@@ -151,6 +152,15 @@ class AnalyticsContainer extends PureComponent {
             data={[
               <PoolTogetherCard
                 key="pooltogether"
+                web3={this.state.web3}
+                selectedAddress={this.state.selectedAddress}
+              />
+            ]}
+          />
+          <TableRow
+            data={[
+              <FulcrumCard
+                key="fulcrum"
                 web3={this.state.web3}
                 selectedAddress={this.state.selectedAddress}
               />

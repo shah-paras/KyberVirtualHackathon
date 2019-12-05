@@ -20,7 +20,6 @@ class UniswapCard extends React.Component {
       tokenAddress,
       this.props.web3.currentProvider
     );
-    console.log(JSON.stringify(tokenReserves));
     this.setState({ 
       token: tokenReserves.token,
       exchange: tokenReserves.exchange,

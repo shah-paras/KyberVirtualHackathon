@@ -7,6 +7,7 @@ import web3 from '../../web3/web3';
 import CompoundCard from './CompoundCard';
 import DyDxCard from './DyDxCard';
 import MakerCard from './MakerCard';
+import PoolTogetherCard from './PoolTogetherCard';
 import SynthetixCard from './SynthetixCard';
 // see todo issue for tokenset in import TokenSetsCard from './TokenSetsCard';
 import UniswapCard from './UniswapCard';
@@ -141,6 +142,15 @@ class AnalyticsContainer extends PureComponent {
             data={[
               <UniswapCard
                 key="uniswap"
+                web3={this.state.web3}
+                selectedAddress={this.state.selectedAddress}
+              />
+            ]}
+          />
+          <TableRow
+            data={[
+              <PoolTogetherCard
+                key="pooltogether"
                 web3={this.state.web3}
                 selectedAddress={this.state.selectedAddress}
               />

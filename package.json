@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@dydxprotocol/solo": "^0.28.0",
-    "@makerdao/dai": "^0.23.0-rc.1",
+    "@makerdao/dai": "^0.23.0-rc.2",
     "@mydefi/ui": "^0.1.24",
     "@uniswap/sdk": "^1.0.0-beta.4",
     "bignumber.js": "^5.0.0",
@@ -14,6 +14,7 @@
     "defizapjs": "^1.0.0",
     "history": "^4.10.1",
     "lodash": "^4.17.15",
+    "pooltogetherjs": "pooltogether/pooltogetherjs",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-autobind": "^1.0.6",

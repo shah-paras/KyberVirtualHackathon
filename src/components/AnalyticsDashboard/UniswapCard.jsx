@@ -26,7 +26,7 @@ class UniswapCard extends React.Component {
       exchange: tokenReserves.exchange,
       ethReserve: tokenReserves.ethReserve,
       tokenReserve: tokenReserves.tokenReserve
-     });
+    });
   };
 
   render() {

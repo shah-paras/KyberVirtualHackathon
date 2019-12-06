@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card, Text, Colors } from '@mydefi/ui';
+import { Card, Text } from '@mydefi/ui';
 import PropTypes from 'prop-types';
+import Colors from './Colors';
 
 const COMPOUND_ACCOUNT_ENDPOINT = 'https://api.compound.finance/api/v2/account';
 

@@ -1,18 +1,30 @@
 import React, { PureComponent } from 'react';
-import { Main, Table, TableRow } from '@mydefi/ui';
+import { Table, TableRow } from '@mydefi/ui';
 import DefiZap from 'defizapjs/src/DefiZap';
 import Web3 from 'web3';
 import web3 from '../../web3/web3';
 
 import CompoundCard from './CompoundCard';
-import DyDxCard from './DyDxCard';
 import FulcrumCard from './FulcrumCard';
-import MakerCard from './MakerCard';
 import PoolTogetherCard from './PoolTogetherCard';
 import SynthetixCard from './SynthetixCard';
 // see todo issue for tokenset in import TokenSetsCard from './TokenSetsCard';
 import UniswapCard from './UniswapCard';
 import WalletCard from './WalletCard';
+
+import { Colors } from './Colors';
+import styles from './ui.css';
+
+export const Main = props => {
+  return (
+    <div
+      className={styles.Main}
+      style={{ backgroundColor: Colors.mainBackground }}
+    >
+      {props.children}
+    </div>
+  );
+};
 
 class AnalyticsContainer extends PureComponent {
   constructor(props) {
@@ -20,9 +32,9 @@ class AnalyticsContainer extends PureComponent {
     const defiZap = new DefiZap();
 
     this.state = {
+      selectedAddress: '',
       web3,
-      defiZap,
-      selectedAddress: ''
+      defiZap
     };
   }
 
@@ -113,15 +125,6 @@ class AnalyticsContainer extends PureComponent {
               />
             ]}
           />
-          <TableRow data={[<MakerCard key="maker" />]} />
-          <TableRow
-            data={[
-              <CompoundCard
-                key="compound"
-                selectedAddress={this.state.selectedAddress}
-              />
-            ]}
-          />
           <TableRow
             data={[
               <SynthetixCard
@@ -132,9 +135,8 @@ class AnalyticsContainer extends PureComponent {
           />
           <TableRow
             data={[
-              <DyDxCard
-                key="dydx"
-                web3={this.state.web3}
+              <CompoundCard
+                key="compound"
                 selectedAddress={this.state.selectedAddress}
               />
             ]}
@@ -150,8 +152,8 @@ class AnalyticsContainer extends PureComponent {
           />
           <TableRow
             data={[
-              <PoolTogetherCard
-                key="pooltogether"
+              <FulcrumCard
+                key="fulcrum"
                 web3={this.state.web3}
                 selectedAddress={this.state.selectedAddress}
               />
@@ -159,8 +161,8 @@ class AnalyticsContainer extends PureComponent {
           />
           <TableRow
             data={[
-              <FulcrumCard
-                key="fulcrum"
+              <PoolTogetherCard
+                key="pooltogether"
                 web3={this.state.web3}
                 selectedAddress={this.state.selectedAddress}
               />

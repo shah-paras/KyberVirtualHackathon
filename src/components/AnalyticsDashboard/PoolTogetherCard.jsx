@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, Text, Colors } from '@mydefi/ui';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line no-unused-vars
 import poolTogetherUtil from 'pooltogetherjs';
 import { ADDRESS, ABI } from '../../web3/poolTogether';
 
@@ -8,16 +9,14 @@ class PoolTogetherCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      poolTogether: {},
       info: {}
     };
   }
 
   componentDidMount = async () => {
-    const poolTogether = new this.props.web3.eth.Contract(ABI, ADDRESS);
-    const info = await poolTogether.methods.getInfo().call();
+    this.poolTogether = new this.props.web3.eth.Contract(ABI, ADDRESS);
+    const info = await this.poolTogether.methods.getInfo().call();
     this.setState({
-      poolTogether,
       info
     });
   };

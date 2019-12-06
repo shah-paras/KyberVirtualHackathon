@@ -8,7 +8,7 @@ function TokenList(tokens) {
     const tkns = tokens.tokens;
     const items = tkns.map(token => (
       <div key={token.address}>
-        <Text size="20px" color={Colors.textPrimary}>
+        <Text size="20px" color={Colors.textSecondary}>
           {token.name} ({token.symbol}) at {token.address}
         </Text>
       </div>

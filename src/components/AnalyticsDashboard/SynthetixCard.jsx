@@ -1,8 +1,9 @@
 import React from 'react';
 import { SynthetixJs } from 'synthetix-js';
-import { Card, Text, Colors } from '@mydefi/ui';
+import { Card, Text } from '@mydefi/ui';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
+import { Colors } from './Colors';
 
 /* JS API: https://synthetixjs.synthetix.io */
 class SynthetixCard extends React.Component {
@@ -23,7 +24,9 @@ class SynthetixCard extends React.Component {
       sUSDBalance: 'N/A',
       snxCollateral: 'N/A',
       snxTransferable: 'N/A',
-      sUSDDebt: 'N/A'
+      sUSDDebt: 'N/A',
+      sETHBalance: 'N/A',
+      sBTCBalance: 'N/A'
     };
   }
 
@@ -45,6 +48,8 @@ class SynthetixCard extends React.Component {
   componentDidUpdate = async prevProps => {
     if (!_.isEqual(this.props.selectedAddress, prevProps.selectedAddress)) {
       const sUSDBalance = await this.synthetix.sUSD.balanceOf(this.props.selectedAddress);
+      const sETHBalance = await this.synthetix.sETH.balanceOf(this.props.selectedAddress);
+      const sBTCBalance = await this.synthetix.sBTC.balanceOf(this.props.selectedAddress);
       const snxCollateral = await this.synthetix.Synthetix.collateral(this.props.selectedAddress);
       const snxTransferable = await this.synthetix.Synthetix.transferableSynthetix(this.props.selectedAddress);
       const sUSDKey = this.synthetix.sUSD.currencyKey();
@@ -55,7 +60,9 @@ class SynthetixCard extends React.Component {
         sUSDBalance: this.synthetix.utils.formatEther(sUSDBalance),
         snxCollateral: this.synthetix.utils.formatEther(snxCollateral),
         snxTransferable: this.synthetix.utils.formatEther(snxTransferable),
-        sUSDDebt: this.synthetix.utils.formatEther(sUSDDebt)
+        sUSDDebt: this.synthetix.utils.formatEther(sUSDDebt),
+        sETHBalance: this.synthetix.utils.formatEther(sETHBalance),
+        sBTCBalance: this.synthetix.utils.formatEther(sBTCBalance)
       });
     }
   };
@@ -63,10 +70,6 @@ class SynthetixCard extends React.Component {
   render() {
     return (
       <Card title="Synthetix" description={this.props.selectedAddress}>
-        <Text size="20px" color={Colors.textPrimary}>
-          SUSD Balance: {this.state.sUSDBalance}
-        </Text>
-        <br />
         <Text size="15px" color={Colors.textSecondary}>
           SNX Collateral: {this.state.snxCollateral}
         </Text>
@@ -86,6 +89,24 @@ class SynthetixCard extends React.Component {
         <Text size="15px" color={Colors.textSecondary}>
           SNX Total Supply: {this.state.snxTotalSupply}
         </Text>
+        <hr />
+        <Text size="20px" color={Colors.textPrimary}>
+          SYNTHS
+        </Text>
+        <br />
+        <Text size="15px" color={Colors.textTertiary}>
+          sUSD Balance: {this.state.sUSDBalance}
+        </Text>
+        <br />
+        <Text size="15px" color={Colors.textTertiary}>
+          sETH Balance: {this.state.sETHBalance}
+        </Text>
+        <br />
+        <Text size="15px" color={Colors.textTertiary}>
+          sUSD Balance: {this.state.sBTCBalance}
+        </Text>
+        <br />
+
       </Card>
     );
   }

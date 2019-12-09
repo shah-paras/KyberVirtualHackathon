@@ -13,8 +13,7 @@ import Survey from './components/SurveyPage';
 import ZapListContainer from './components/ZapList/ZapListContainer';
 import LiveZapsContainer from './components/ZapList/LiveZapsContainer';
 import LandingPage from './components/LandingPage';
-// import Analytics from './pages/analytics';
-// import Dashboard from './pages/dashboard';
+import AnalyticsDashboard from "./components/AnalyticsDashboard";
 
 class App extends PureComponent {
   static propTypes = {
@@ -45,6 +44,7 @@ class App extends PureComponent {
           <Route exact path="/zaps/:id" component={ZapsPage} />
           {/* <Route exact path="/faq" component={Faq} /> */}
           <Route exact path="/availablezaps" component={LiveZapsContainer} />
+          <Route exact path="/analytics-dashboard" component={AnalyticsDashboard} />
         </Switch>
       </Router>
     );

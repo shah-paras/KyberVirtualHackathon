@@ -5,7 +5,7 @@ export const Colors = {
   textTertiary: '#8e8aaf',
 
   mainBackground: ' #f9fbfd',
-  secondaryBackground: '#211e43',
+  secondaryBackground: '#007bff',
   darkBackground01: '#11112b',
   darkBackground02: '#191735',
 

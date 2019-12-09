@@ -1,14 +1,22 @@
 import React from 'react';
-import { Card, Text, Colors } from '@mydefi/ui';
+import { Asset, Card, Modal, Text } from '@mydefi/ui';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line no-unused-vars
 import poolTogetherUtil from 'pooltogetherjs';
 import { ADDRESS, ABI } from '../../web3/poolTogether';
+import numeral from 'numeral';
+import Colors from './Colors';
+
+const ICON =
+  'https://www.pooltogether.com/_next/static/images/pooltogether-white-logo-5d693df8933592c048c8168299f49144.svg';
+
+const NUMERAL_FORMAT = '0,0.000';
 
 class PoolTogetherCard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      showModal: false,
       info: {}
     };
   }
@@ -21,37 +29,61 @@ class PoolTogetherCard extends React.Component {
     });
   };
 
+  toggleModal = () => {
+    const isModal = this.state.showModal;
+    this.setState({
+      showModal: !isModal
+    });
+  };
+
   render() {
     return (
-      <Card title="PoolTogether" description={this.props.selectedAddress}>
-        <Text size="20px" color={Colors.textPrimary}>
-          Total Supply Balance: {this.state.info.supplyBalanceTotal}
-        </Text>
-        <br />
-        <Text size="20px" color={Colors.textSecondary}>
-          Ticket Cost: {this.state.info.ticketCost}
-        </Text>
-        <br />
-        <Text size="20px" color={Colors.textSecondary}>
-          Participant Count: {this.state.info.participantCount}
-        </Text>
-        <br />
-        <Text size="20px" color={Colors.textSecondary}>
-          Max Pool Size: {this.state.info.maxPoolSize}
-        </Text>
-        <br />
-        <Text size="20px" color={Colors.textSecondary}>
-          Estimated Interest: {this.state.info.estimatedInterestFixedPoint18}
-        </Text>
-        <br />
-        <Text size="20px" color={Colors.textSecondary}>
-          Estimated Interest: {this.state.info.estimatedInterestFixedPoint18}
-        </Text>
-        <br />
-        <Text size="20px" color={Colors.textSecondary}>
-          Hash of Secret: {this.state.info.hashOfSecret}
-        </Text>
-        <br />
+      <Card
+        title="PoolTogether"
+        description="No-loss lottery"
+        onClick={this.toggleModal}
+      >
+        <Asset icon={ICON} size="30px" symbol="" />
+        <Modal
+          title="Fulcrum Assets"
+          visible={this.state.showModal}
+          onClick={this.toggleModal}
+          width="800px"
+        >
+          <Text size="20px" color={Colors.textPrimary}>
+            Total Supply Balance: 
+            {numeral(this.state.info.supplyBalanceTotal).format(NUMERAL_FORMAT)}
+          </Text>
+          <br />
+          <Text size="20px" color={Colors.textSecondary}>
+            Ticket Cost: 
+            {numeral(this.state.info.ticketCost).format(NUMERAL_FORMAT)}
+          </Text>
+          <br />
+          <Text size="20px" color={Colors.textSecondary}>
+            Participant Count: 
+            {numeral(this.state.info.participantCount).format(NUMERAL_FORMAT)}
+          </Text>
+          <br />
+          <Text size="20px" color={Colors.textSecondary}>
+            Max Pool Size: 
+            {numeral(this.state.info.maxPoolSize).format(NUMERAL_FORMAT)}
+          </Text>
+          <br />
+          <Text size="20px" color={Colors.textSecondary}>
+            Estimated Interest: 
+            {numeral(this.state.info.estimatedInterestFixedPoint18).format(NUMERAL_FORMAT)}
+          </Text>
+          <br />
+          <Text size="20px" color={Colors.textSecondary}>
+            Estimated Interest: 
+            {numeral(this.state.info.estimatedInterestFixedPoint18).format(NUMERAL_FORMAT)}
+          </Text>
+          <br />
+          <Text size="20px" color={Colors.textSecondary}>
+            Hash of Secret: {this.state.info.hashOfSecret}
+          </Text>
+        </Modal>
       </Card>
     );
   }

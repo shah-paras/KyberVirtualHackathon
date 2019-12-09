@@ -1,7 +1,10 @@
 import React from 'react';
-import { Card, Text, Colors } from '@mydefi/ui';
+import { Asset, Card, Modal, Text } from '@mydefi/ui';
 import PropTypes from 'prop-types';
 import { BZxJS } from '@bzxnetwork/bzx.js';
+import Colors from './Colors';
+
+const ICON = 'https://fulcrum.trade/static/media/fulcrum_logo.5cbbdf7b.svg';
 
 function TokenList(tokens) {
   if (tokens && tokens.tokens) {
@@ -21,7 +24,9 @@ function TokenList(tokens) {
 class FulcrumCard extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      showModal: false
+    };
   }
 
   componentDidMount = async () => {
@@ -35,10 +40,25 @@ class FulcrumCard extends React.Component {
     });
   };
 
+  toggleModal = () => {
+    const isModal = this.state.showModal;
+    this.setState({
+      showModal: !isModal
+    });
+  };
+
   render() {
     return (
-      <Card title="Fulcrum" description={this.props.selectedAddress}>
-        <TokenList tokens={this.state.tokens} />
+      <Card title="Fulcrum" description="Lending and Trading" onClick={this.toggleModal}>
+        <Asset icon={ICON} size="30px" symbol="" />
+        <Modal
+          title="Fulcrum Assets"
+          visible={this.state.showModal}
+          onClick={this.toggleModal}
+          width="800px"
+        >
+          <TokenList tokens={this.state.tokens} />
+        </Modal>
       </Card>
     );
   }

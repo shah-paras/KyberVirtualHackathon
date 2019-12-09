@@ -1,6 +1,8 @@
 import React from 'react';
-import { Card, Text, Colors } from '@mydefi/ui';
+import { Card, Text } from '@mydefi/ui';
 import PropTypes from 'prop-types';
+import numeral from 'numeral';
+import Colors from './Colors';
 import web3 from '../../web3/web3';
 
 class WalletCard extends React.Component {
@@ -40,7 +42,7 @@ class WalletCard extends React.Component {
     return (
       <Card title="Your wallet" description={this.props.selectedAddress}>
         <Text size="20px" color={Colors.textPrimary}>
-          {this.state.currentBalance} Ether
+          {numeral(this.state.currentBalance).format('0,0.000')} ETH
         </Text>
       </Card>
     );

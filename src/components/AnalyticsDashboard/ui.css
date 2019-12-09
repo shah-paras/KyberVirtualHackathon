@@ -125,7 +125,7 @@ body,
 /** Modal styling */
 .Modal {
   position: absolute;
-  background: #221e44;
+  background: #007bff;;
   border-radius: 10px;
   top: 60px;
   text-align: center;
@@ -253,13 +253,13 @@ table.mdf_table th {
   color: #ffffff;
   font-size: 13px;
   padding: 7px;
-  border-bottom: 1px solid #363265;
+  border-bottom: 1px solid #007bff;;
 }
 table.mdf_table td {
   color: #6a668e;
   font-size: 13px;
   padding: 7px;
-  border-bottom: 1px solid #363265;
+  border-bottom: 1px solid #007bff;;
 }
 
 /** Utilities */

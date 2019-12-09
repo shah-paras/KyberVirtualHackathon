@@ -11,6 +11,7 @@ import SynthetixCard from './SynthetixCard';
 // see todo issue for tokenset in import TokenSetsCard from './TokenSetsCard';
 import UniswapCard from './UniswapCard';
 import WalletCard from './WalletCard';
+import DyDxCard from './DyDxCard';
 
 import { Colors } from './Colors';
 import styles from './ui.css';
@@ -125,45 +126,35 @@ class AnalyticsContainer extends PureComponent {
               />
             ]}
           />
+        </Table>
+        <Table>
           <TableRow
             data={[
               <SynthetixCard
                 key="synthetix"
                 selectedAddress={this.state.selectedAddress}
-              />
-            ]}
-          />
-          <TableRow
-            data={[
-              <CompoundCard
-                key="compound"
-                selectedAddress={this.state.selectedAddress}
-              />
-            ]}
-          />
-          <TableRow
-            data={[
+              />,
               <UniswapCard
                 key="uniswap"
                 web3={this.state.web3}
                 selectedAddress={this.state.selectedAddress}
-              />
-            ]}
-          />
-          <TableRow
-            data={[
+              />,
               <FulcrumCard
                 key="fulcrum"
                 web3={this.state.web3}
                 selectedAddress={this.state.selectedAddress}
-              />
-            ]}
-          />
-          <TableRow
-            data={[
+              />,
               <PoolTogetherCard
                 key="pooltogether"
                 web3={this.state.web3}
+                selectedAddress={this.state.selectedAddress}
+              />,
+              <CompoundCard
+                key="compound"
+                selectedAddress={this.state.selectedAddress}
+              />,
+              <DyDxCard
+                key="dydx"
                 selectedAddress={this.state.selectedAddress}
               />
             ]}

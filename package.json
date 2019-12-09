@@ -15,6 +15,7 @@
     "defizapjs": "^1.0.0",
     "history": "^4.10.1",
     "lodash": "^4.17.15",
+    "numeral": "^2.0.6",
     "pooltogetherjs": "pooltogether/pooltogetherjs",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",

@@ -1,7 +1,11 @@
 import React from 'react';
 import { Card, Text, Colors } from '@mydefi/ui';
+import numeral from 'numeral';
+import Colors from './Colors';
 
 import createMaker from '../../utils/dai';
+
+const NUMERAL_FORMAT = '0,0.000';
 
 class MakerCard extends React.Component {
   constructor(props) {
@@ -42,17 +46,17 @@ class MakerCard extends React.Component {
         <Text
           size="20px"
           color={Colors.textPrimary}
-        >{`Collateral ${this.state.collateralizationRatio}`}</Text>
+        >{`Collateral ${numeral(this.state.collateralizationRatio).format(NUMERAL_FORMAT)}`}</Text>
         <br />
         <Text
           size="20px"
           color={Colors.textPrimary}
-        >{`Debt ${this.state.balance}`}</Text>
+        >{`Debt ${numeral(this.state.balance).format(NUMERAL_FORMAT)}`}</Text>
         <br />
         <Text
           size="20px"
           color={Colors.textPrimary}
-        >{`USD Target Price: ${this.state.targetPrice}`}</Text>
+        >{`USD Target Price: ${numeral(this.state.targetPrice).format(NUMERAL_FORMAT)}`}</Text>
       </Card>
     );
   }

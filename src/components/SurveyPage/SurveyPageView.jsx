@@ -1,42 +1,52 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import Stepper from '@material-ui/core/Stepper';
 import Spinner from 'react-bootstrap/Spinner';
+import Step from '@material-ui/core/Step';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import isEmpty from 'lodash/isEmpty';
 
+import { StepLabel, StepContent, Collapse } from '@material-ui/core';
 import NavigationBar from '../NavigationBar';
-import styles from './SurveyPageView.module.css';
-import ZapFullView from '../Zaps/ZapFullView';
-import Zaps from '../../constants/Zaps';
+import { Zap } from '../ZapList/ZapListViewV2';
+import zaps from '../../constants/Zaps';
 import { registerEvent } from '../../api/googleAnalytics';
 import { GENERATE_ZAP, SURVEY_PAGE } from '../../constants/googleAnalytics';
 
 const SurveyPageView = props => {
   const {
-    questionNumber,
     onAnswer,
     surveyList,
     reDoSurvey,
+    isLoading,
     surveyComplete,
     submitResults,
-    isLoading,
-    answer
+    recommendedZaps,
+    activeStep,
+    moveToStep,
+    answers,
+    isResultsDisabled
   } = props;
 
-  const generateResult = () => {
-    return isEmpty(answer) ? null : (
+  const getZap = () => {
+    return (
       <>
         <br /> <br />
         <h4>
-          You might find this Zap useful: <br />
+          You might find these Zaps useful: <br />
         </h4>
-        <ZapFullView
-          name={Zaps[answer].name}
-          components={Zaps[answer].components}
-          isOrderable={Zaps[answer].isOrderable}
-          description={Zaps[answer].description}
-        />
+        {recommendedZaps.map(zap => (
+          <>
+            <Row key={zaps[zap].name}>
+              <Col>
+                <Zap {...zaps[zap]} />
+              </Col>
+            </Row>
+            <br />
+          </>
+        ))}
         <Row className="justify-content-center pb-3">
           <Button
             variant="info"
@@ -50,7 +60,8 @@ const SurveyPageView = props => {
               registerEvent({
                 category: GENERATE_ZAP,
                 action: SURVEY_PAGE
-              })}
+              })
+            }
           >
             Don&apos;t see your Zap? Submit a request and we will create one!
           </Button>
@@ -74,120 +85,93 @@ const SurveyPageView = props => {
     );
   };
 
-  const surveyCompleted = () => (
-    <>
-      <div key={questionNumber}>
-        <Container>
-          <NavigationBar />
-          {surveyComplete ? (
-            <Button
-              variant="outline-primary"
-              onClick={reDoSurvey}
-              className="mx-1 px-1"
-              size="lg"
-            >
-              Start Over
-            </Button>
-          ) : (
-            <>
-              <h4>
-                Answer a few multiple choice questions to see which Zap might
-                fit your needs
-              </h4>
-              <br />
-              <Button
-                variant="primary"
-                onClick={submitResults}
-                className="mx-3 px-3"
-                size="lg"
-                // block
-              >
-                Get Results
-              </Button>{' '}
-            </>
-          )}
-          {isLoading ? (
-            <>
-              <br />
-              <Spinner animation="grow" />
-              <Spinner animation="grow" />
-              <Spinner animation="grow" />
-              <Spinner animation="grow" />
-              <Spinner animation="grow" />
-            </>
-          ) : (
-            generateResult()
-          )}
-        </Container>
-      </div>
-    </>
-  );
+  const generateResult = () => {
+    return (
+      <>
+        <Button
+          variant="outline-primary"
+          onClick={reDoSurvey}
+          className="mx-1 my-3 px-1"
+          size="lg"
+        >
+          Start Over
+        </Button>
+        <Button
+          disabled={isResultsDisabled}
+          variant="primary"
+          onClick={submitResults}
+          className="mx-3 my-3 px-3"
+          size="lg"
+        >
+          Get Results
+        </Button>
+        {isLoading ? (
+          <>
+            <Spinner animation="grow" />
+            <Spinner animation="grow" />
+          </>
+        ) : null}
+      </>
+    );
+  };
 
-  const questions = () => {
-    const questionsList = surveyList.map(item => {
-      return (
-        <>
-          <div key={questionNumber}>
-            <Container key={questionNumber}>
-              <NavigationBar />
-              <h4>
-                Answer a few multiple choice questions to see which Zap might
-                fit your needs
-              </h4>
-              <br />
-              <h5 style={{ fontSize: 15 }}>
-                Question {questionNumber} out of 4
-              </h5>
-              <h4>{item.question}</h4>
-              <ol type="A">
-                {item.options.map(option => {
-                  return (
-                    <li key={option.value} className="m-3 pl-2 px-2">
+  const surveySteps = () => {
+    return (
+      <Collapse in={!surveyComplete}>
+        <Stepper
+          activeStep={activeStep}
+          nonLinear
+          orientation="vertical"
+          style={{ backgroundColor: 'inherit' }}
+        >
+          {surveyList.map(question => {
+            return (
+              <Step
+                key={question.questionNumber}
+                completed={!isEmpty(answers[question.questionNumber])}
+              >
+                <StepLabel onClick={() => moveToStep(question.questionNumber)}>
+                  <h5>{question.question}</h5>
+                  <p className="text-monospace text-uppercase">
+                    {answers[question.questionNumber]}
+                  </p>
+                </StepLabel>
+                <StepContent>
+                  {question.options.map(option => {
+                    return (
                       <Button
+                        key={option.value}
                         variant="outline-primary"
-                        size="lg"
+                        size="auto"
                         onClick={() => onAnswer(option.key)}
                         className="shadow"
                         block
                       >
                         {option.value}
                       </Button>
-                    </li>
-                  );
-                })}
-              </ol>
-              <Row>
-                <h5 style={{ fontSize: 15 }} className="m-3">
-                  DISCLOSURE:
-                  <p>
-                    This is not Investment Advice. Do not make investment
-                    decisions solely based on results generated by this tool.
-                    This Project is in Beta. Use it at your own discretion.
-                  </p>
-                  <p>
-                    Please note that we are not licensed financial advisors
-                    under any law. Please consult your own independent
-                    investment advisor before making any investment decisions.
-                  </p>
-                </h5>
-              </Row>
-            </Container>
-          </div>
-        </>
-      );
-    });
-    return questionsList[questionNumber - 1];
-  };
-
-  const questionaire = () => {
-    return (
-      <div className={styles.background}>
-        {surveyList.length >= questionNumber ? questions() : surveyCompleted()}
-      </div>
+                    );
+                  })}
+                </StepContent>
+              </Step>
+            );
+          })}
+        </Stepper>
+      </Collapse>
     );
   };
 
-  return questionaire(questionNumber);
+  return (
+    <Container>
+      <NavigationBar />
+      <h4>
+        Answer a few multiple choice questions to see which Zap might fit your
+        needs
+      </h4>
+      {surveySteps()}
+      {activeStep === 4 ? generateResult() : null}
+      {surveyComplete ? getZap() : null}
+    </Container>
+  );
 };
 
 export default SurveyPageView;

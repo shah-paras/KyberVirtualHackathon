@@ -2,186 +2,186 @@ const surveyResults = {
   conservative: {
     beginner: {
       shortTerm: {
-        bull: 'lender',
-        bear: 'lender',
-        flat: 'lender',
-        notSure: 'lender'
+        bull: ['lender', 'unipoolseth'],
+        bear: ['lender', 'unipooldai'],
+        flat: ['lender', 'unipoolsnx'],
+        notSure: ['lender', 'unipoolmkr']
       },
       mediumTerm: {
-        bull: 'lender',
-        bear: 'lender',
-        flat: 'lender',
-        notSure: 'lender'
+        bull: ['unipoolseth', 'lender'],
+        bear: ['lender', 'unipooldai'],
+        flat: ['lender', 'unipoolmkr'],
+        notSure: ['lender', 'unipoolsnx']
       },
       longTerm: {
-        bull: 'supersaver',
-        bear: 'supersaver',
-        flat: 'supersaver',
-        notSure: 'supersaver'
+        bull: ['unipoolseth', 'supersaver'],
+        bear: ['supersaver', 'unipooldai'],
+        flat: ['supersaver', 'unipoolsnx'],
+        notSure: ['supersaver', 'unipoolmkr']
       }
     },
     expert: {
       shortTerm: {
-        bull: 'bullSharpe',
-        bear: 'bearSharpe',
-        flat: 'lender',
-        notSure: 'lender'
+        bull: ['unipoolseth', 'bullSharpe'],
+        bear: ['unipooldai', 'bearSharpe'],
+        flat: ['lender', 'unipoolmkr'],
+        notSure: ['lender', 'unipoolsnx']
       },
       mediumTerm: {
-        bull: 'bullSharpe',
-        bear: 'bearSharpe',
-        flat: 'lender',
-        notSure: 'lender'
+        bull: ['unipoolseth', 'bullSharpe'],
+        bear: ['unipooldai', 'bearSharpe'],
+        flat: ['lender', 'unipoolsnx'],
+        notSure: ['lender', 'unipoolmkr']
       },
       longTerm: {
-        bull: 'bullSharpe',
-        bear: 'bearSharpe',
-        flat: 'supersaver',
-        notSure: 'supersaver'
+        bull: ['unipoolseth', 'bullSharpe'],
+        bear: ['unipooldai', 'bearSharpe'],
+        flat: ['supersaver', 'unipoolsnx'],
+        notSure: ['supersaver', 'unipoolmkr']
       }
     },
     advanced: {
       shortTerm: {
-        bull: 'bullSharpe',
-        bear: 'bearSharpe',
-        flat: 'lender',
-        notSure: 'lender'
+        bull: ['unipoolseth', 'bullSharpe'],
+        bear: ['unipooldai', 'bearSharpe'],
+        flat: ['lender', 'unipoolmkr'],
+        notSure: ['lender', 'unipoolsnx']
       },
       mediumTerm: {
-        bull: 'bullSharpe',
-        bear: 'bearSharpe',
-        flat: 'lender',
-        notSure: 'lender'
+        bull: ['unipoolseth', 'bullSharpe'],
+        bear: ['unipooldai', 'bearSharpe'],
+        flat: ['lender', 'unipoolsnx'],
+        notSure: ['lender', 'unipoolmkr']
       },
       longTerm: {
-        bull: 'bullSharpe',
-        bear: 'bearSharpe',
-        flat: 'supersaver',
-        notSure: 'supersaver'
+        bull: ['unipoolseth', 'bullSharpe'],
+        bear: ['unipooldai', 'bearSharpe'],
+        flat: ['supersaver', 'unipoolmkr'],
+        notSure: ['supersaver', 'unipoolsnx']
       }
     }
   },
   moderate: {
     beginner: {
       shortTerm: {
-        bull: 'moderatebull',
-        bear: 'moderate',
-        flat: 'moderate',
-        notSure: 'moderate'
+        bull: ['unipoolseth', 'moderatebull'],
+        bear: ['unipooldai', 'moderate'],
+        flat: ['unipoolsnx', 'moderate'],
+        notSure: ['unipoolmkr', 'moderate']
       },
       mediumTerm: {
-        bull: 'moderatebull',
-        bear: 'moderate',
-        flat: 'moderate',
-        notSure: 'moderate'
+        bull: ['unipoolseth', 'moderatebull'],
+        bear: ['unipooldai', 'moderate'],
+        flat: ['unipoolmkr', 'moderate'],
+        notSure: ['unipoolsnx', 'moderate']
       },
       longTerm: {
-        bull: 'moderatebull',
-        bear: 'moderateBear',
-        flat: 'moderate',
-        notSure: 'moderate'
+        bull: ['unipoolseth', 'moderatebull'],
+        bear: ['unipooldai', 'moderateBear'],
+        flat: ['unipoolmkr', 'moderate'],
+        notSure: ['unipoolsnx', 'moderate']
       }
     },
     expert: {
       shortTerm: {
-        bull: 'longTermBull',
-        bear: 'shortTermBear',
-        flat: 'shortTermFlat',
-        notSure: 'shortTermFlat'
+        bull: ['unipoolseth', 'longTermBull'],
+        bear: ['unipooldai', 'shortTermBear'],
+        flat: ['shortTermFlat', 'unipoolsnx'],
+        notSure: ['unipoolmkr', 'shortTermFlat']
       },
       mediumTerm: {
-        bull: 'longTermBull',
-        bear: 'shortTermBear',
-        flat: 'shortTermFlat',
-        notSure: 'shortTermFlat'
+        bull: ['unipoolseth', 'longTermBull'],
+        bear: ['unipooldai', 'shortTermBear'],
+        flat: ['unipoolmkr', 'shortTermFlat'],
+        notSure: ['unipoolsnx', 'shortTermFlat']
       },
       longTerm: {
-        bull: 'longTermBull',
-        bear: 'shortTermBear',
-        flat: 'moderateFlat',
-        notSure: 'moderateFlat'
+        bull: ['unipoolseth', 'longTermBull'],
+        bear: ['unipooldai', 'shortTermBear'],
+        flat: ['unipoolsnx', 'moderateFlat'],
+        notSure: ['unipoolmkr', 'moderateFlat']
       }
     },
     advanced: {
       shortTerm: {
-        bull: 'moderatebull',
-        bear: 'shortTermBear',
-        flat: 'shortTermFlat',
-        notSure: 'shortTermFlat'
+        bull: ['unipoolseth', 'moderatebull'],
+        bear: ['unipooldai', 'shortTermBear'],
+        flat: ['unipoolmkr', 'shortTermFlat'],
+        notSure: ['unipoolsnx', 'shortTermFlat']
       },
       mediumTerm: {
-        bull: 'moderateDiversified',
-        bear: 'activeBear',
-        flat: 'moderateFlat',
-        notSure: 'moderateFlat'
+        bull: ['unipoolseth', 'moderateDiversified'],
+        bear: ['unipooldai', 'activeBear'],
+        flat: ['unipoolsnx', 'moderateFlat'],
+        notSure: ['unipoolmkr', 'moderateFlat']
       },
       longTerm: {
-        bull: 'hedgedBull',
-        bear: 'moderateFlat',
-        flat: 'moderateFlat',
-        notSure: 'moderateFlat'
+        bull: ['unipoolseth', 'hedgedBull'],
+        bear: ['unipooldai', 'moderateFlat'],
+        flat: ['unipoolmkr', 'moderateFlat'],
+        notSure: ['moderateFlat', 'unipoolsnx']
       }
     }
   },
   aggressive: {
     beginner: {
       shortTerm: {
-        bull: 'beginnerBull',
-        bear: 'beginnerBear',
-        flat: 'shortTermFlat',
-        notSure: 'shortTermFlat'
+        bull: ['unipoolseth', 'beginnerBull'],
+        bear: ['unipooldai', 'beginnerBear'],
+        flat: ['unipoolsnx', 'shortTermFlat'],
+        notSure: ['unipoolmkr', 'shortTermFlat']
       },
       mediumTerm: {
-        bull: 'lender',
-        bear: 'lender',
-        flat: 'lender',
-        notSure: 'lender'
+        bull: ['unipoolseth', 'lender'],
+        bear: ['unipooldai', 'lender'],
+        flat: ['unipoolmkr', 'lender'],
+        notSure: ['lender', 'unipoolsnx']
       },
       longTerm: {
-        bull: 'beginnerBull',
-        bear: 'activeBear',
-        flat: 'flatLands',
-        notSure: 'flatLands'
+        bull: ['unipoolseth', 'beginnerBull'],
+        bear: ['unipooldai', 'activeBear'],
+        flat: ['unipoolsnx', 'flatLands'],
+        notSure: ['unipoolmkr', 'flatLands']
       }
     },
     expert: {
       shortTerm: {
-        bull: 'doublebull',
-        bear: 'riskyBear',
-        flat: 'doublebull',
-        notSure: 'doublebull'
+        bull: ['doublebull', 'unipoolseth'],
+        bear: ['unipooldai', 'riskyBear'],
+        flat: ['doublebull', 'unipoolmkr'],
+        notSure: ['doublebull', 'unipoolsnx']
       },
       mediumTerm: {
-        bull: 'doublebull',
-        bear: 'activeBear',
-        flat: 'doublebull',
-        notSure: 'doublebull'
+        bull: ['doublebull', 'unipoolseth'],
+        bear: ['unipooldai', 'activeBear'],
+        flat: ['doublebull', 'unipoolsnx'],
+        notSure: ['doublebull', 'unipoolmkr']
       },
       longTerm: {
-        bull: 'riskyBull',
-        bear: 'activeBear',
-        flat: 'flatLands',
-        notSure: 'flatLands'
+        bull: ['unipoolseth', 'riskyBull'],
+        bear: ['unipooldai', 'activeBear'],
+        flat: ['unipoolmkr', 'flatLands'],
+        notSure: ['unipoolsnx', 'flatLands']
       }
     },
     advanced: {
       shortTerm: {
-        bull: 'ETHMaximalist',
-        bear: 'riskyBear',
-        flat: 'flatLands',
-        notSure: 'lender'
+        bull: ['ETHMaximalist', 'unipoolseth'],
+        bear: ['unipooldai', 'riskyBear'],
+        flat: ['unipoolmkr', 'flatLands'],
+        notSure: ['unipoolsnx', 'lender']
       },
       mediumTerm: {
-        bull: 'ETHMaximalist',
-        bear: 'riskyBear',
-        flat: 'flatLands',
-        notSure: 'lender'
+        bull: ['unipoolseth', 'ETHMaximalist'],
+        bear: ['unipooldai', 'riskyBear'],
+        flat: ['unipoolsnx', 'flatLands'],
+        notSure: ['unipoolmkr', 'lender']
       },
       longTerm: {
-        bull: 'riskyBull',
-        bear: 'activeBear',
-        flat: 'activeBull',
-        notSure: 'activeBull'
+        bull: ['unipoolseth', 'riskyBull'],
+        bear: ['unipooldai', 'activeBear'],
+        flat: ['activeBull', 'unipoolmkr'],
+        notSure: ['unipoolsnx', 'activeBull']
       }
     }
   }

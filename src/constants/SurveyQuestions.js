@@ -1,6 +1,6 @@
 const surveyQuestions = [
   {
-    questionNumber: 1,
+    questionNumber: 0,
     question: 'What is your investing style?',
     options: [
       {
@@ -19,7 +19,7 @@ const surveyQuestions = [
     ]
   },
   {
-    questionNumber: 2,
+    questionNumber: 1,
     question:
       'How much experience do you have interacting with DeFi protocols?',
     options: [
@@ -40,7 +40,7 @@ const surveyQuestions = [
     ]
   },
   {
-    questionNumber: 3,
+    questionNumber: 2,
     question: 'What is your current strategy?',
     options: [
       {
@@ -58,7 +58,7 @@ const surveyQuestions = [
     ]
   },
   {
-    questionNumber: 4,
+    questionNumber: 3,
     question: 'What is your outlook on ETH/USD for the next 3 MONTHS?',
     options: [
       {
@@ -78,6 +78,11 @@ const surveyQuestions = [
         key: 'notSure'
       }
     ]
+  },
+  {
+    questionNumber: 4,
+    question: 'Result',
+    options: []
   }
 ];
 

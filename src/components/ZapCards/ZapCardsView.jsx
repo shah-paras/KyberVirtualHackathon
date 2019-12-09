@@ -3,8 +3,9 @@ import isEmpty from 'lodash/isEmpty';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-import PercentageCircle from '../PercentageCircle';
+// import PercentageCircle from '../PercentageCircle';
 import '../../App.css';
+import Donut from '../PercentageDoughnut';
 
 const ZapCardsView = props => {
   const {
@@ -15,19 +16,14 @@ const ZapCardsView = props => {
     return (
       <Card className="text-center justify-content-center">
         <Card.Body>
-          <div
+          {/* <div
             className="font-30 lender mt-0 mb-4 pb-4"
             style={{ height: '50px' }}
           >
             <h3>{name}</h3>
-          </div>
-          <div className="mt-2 row justify-content-center flex flex-wrap">
-            {components.map(({ name, percent }) => (
-              <div key={name}>
-                <PercentageCircle percentage={percent} color="#1314ad" />
-                <h6 className="text-center mt-3">{name}</h6>
-              </div>
-            ))}
+          </div> */}
+          <div className="mb-2 row justify-content-center flex flex-wrap">
+            <Donut data={props.basketData} />
           </div>
           <div className="text-center justify-content-center">
             <Button href={`/zaps/${id}`} size="lg" variant="primary">

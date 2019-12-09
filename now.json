@@ -1,0 +1,11 @@
+{
+    "build": {
+      "env": {
+        "REACT_APP_BLOCKNATIVE_ID": "@blocknativeid",
+        "REACT_APP_FORTMATIC_KEY": "@fortmatic",
+        "REACT_APP_PORTIS_KEY": "@portis",
+        "REACT_APP_SQUARELINK_KEY": "@squarelink",
+        "REACT_APP_INFURA_KEY": "@infura"
+      }
+    }
+}

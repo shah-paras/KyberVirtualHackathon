@@ -9,12 +9,11 @@ import './App.css';
 
 import ZapsPage from './components/Zaps';
 import Survey from './components/SurveyPage';
-import Faq from './components/Faq';
+// import Faq from './components/Faq';
 import ZapListContainer from './components/ZapList/ZapListContainer';
 import LiveZapsContainer from './components/ZapList/LiveZapsContainer';
 import LandingPage from './components/LandingPage';
 import AnalyticsDashboard from "./components/AnalyticsDashboard";
-// import Dashboard from "./pages/dashboard";
 
 class App extends PureComponent {
   static propTypes = {
@@ -38,12 +37,12 @@ class App extends PureComponent {
       <Router history={history}>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          {/* <Route exact path="/dashboard" component={Dashboard} /> */}
-          {/* <Route exact path="/analytics" component={Analytics} /> */}
+          {/* <Route exact path="/dashboard" component={Dashboard} />
+          <Route exact path="/analytics" component={Analytics} /> */}
           <Route exact path="/survey" component={Survey} />
           <Route exact path="/zaps" component={ZapListContainer} />
           <Route exact path="/zaps/:id" component={ZapsPage} />
-          <Route exact path="/faq" component={Faq} />
+          {/* <Route exact path="/faq" component={Faq} /> */}
           <Route exact path="/availablezaps" component={LiveZapsContainer} />
           <Route exact path="/analytics-dashboard" component={AnalyticsDashboard} />
         </Switch>

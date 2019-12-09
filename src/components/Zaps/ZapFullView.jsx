@@ -7,7 +7,7 @@ import { useAccordionToggle } from 'react-bootstrap/AccordionToggle';
 import Accordion from 'react-bootstrap/Accordion';
 
 import PercentageCircle from '../PercentageCircle';
-import LenderBuyButton from '../BuyButton/LenderBuyButton';
+import BuyButton from '../BuyButton/BuyButtonContainer';
 import styles from './Zaps.module.css';
 import '../../App.css';
 
@@ -43,7 +43,9 @@ class ZapFullView extends PureComponent {
               <div className="card-body">
                 <Row className="flex-column">
                   <Row className="justify-content-center">
-                    <h1 className="text-center my-3 hedger">{name}</h1>
+                    <h1 className="text-center my-3 hedger overflow-hidden">
+                      {name}
+                    </h1>
                   </Row>
                   <Row className="justify-content-center">
                     {components.map(item => (
@@ -69,7 +71,7 @@ class ZapFullView extends PureComponent {
                       >
                         View Tutorial
                       </Button>
-                      <LenderBuyButton name={name} isOrderable={isOrderable} />
+                      <BuyButton name={name} isOrderable={isOrderable} />
                       <this.customToggle eventKey="0">
                         More info
                       </this.customToggle>
@@ -103,7 +105,7 @@ class ZapFullView extends PureComponent {
                   </Accordion>
                 ) : (
                   <div className="row justify-content-center my-4">
-                    <LenderBuyButton name={name} isOrderable={isOrderable} />
+                    <BuyButton name={name} isOrderable={isOrderable} />
                     <div className="col-12 col-md-12 col-lg-12 text-center">
                       <h4 style={{ color: 'black' }}>
                         This Zap is still under development.

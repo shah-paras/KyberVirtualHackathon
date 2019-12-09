@@ -15,19 +15,20 @@ const WhyUseDeFiZap = () => (
     <Row className="justify-content-center text-center">
       <Col sm md lg>
         <img src={SaveTime} width="94px" alt="Save Time" />
-        <h5>Save Time</h5>
+        <h5>Save Time {'&'} Gas</h5>
         <p>
-          Zap is a smart contract that auto-spreads incoming deposits across
-          multiple DeFi protocols in a single transaction and based on pre-set
-          allocations - bypassing many manual steps.
+          DeFiZap is a system of smart contracts - Zaps - that deploys capital
+          across multiple DeFi protocols in one transaction, saving users’ time
+          and gas fees.
         </p>
       </Col>
       <Col sm md lg>
         <img src={SaveGas} width="120px" alt="Save Time" />
-        <h5>Save Gas</h5>
+        <h5>Easy Access</h5>
         <p>
-          Access all your favorite DeFi protocols and save up to 40% on
-          transaction fees.
+          DeFiZap doesn’t spread your money into 'top 10 on coinmarketcap' -
+          Zaps infuse capital into DeFi protocols built on top of Ethereum,
+          furthering user adoption.
           <br />
           <a
             href="https://defitutorials.substack.com/p/get-instant-exposure-across-multiple"
@@ -42,8 +43,9 @@ const WhyUseDeFiZap = () => (
         <img src={NonCustodial} width="90px" alt="Save Time" />
         <h5>Non Custodial</h5>
         <p>
-          DeFiZap smart contracts never hold your assets - you will instantly
-          receive purchased assets.
+          When you use DeFiZap, you mint {'&'} receive the same
+          liquidity/position tracking tokens as when separately using Uniswap,
+          Compound, bZx, Synthetix, etc. on your own.
           <br />
           <a
             href="https://github.com/DeFiStrategies/KyberVirtualHackathon/tree/master/SmartContracts"

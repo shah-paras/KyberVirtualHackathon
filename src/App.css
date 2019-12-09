@@ -156,3 +156,15 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-bottom: 150px;
   }
 }
+
+.beforePill{
+  margin-left: 0;
+}
+
+.afterPill{
+  margin: 5px;
+}
+
+.zapFullViewHeader{
+  padding-top: 15px;
+}

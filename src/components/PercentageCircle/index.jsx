@@ -38,7 +38,7 @@ export default props => {
             stroke: color
           }}
         />
-        <foreignObject x="30%" y="25%" width="150" height="100">
+        <foreignObject x="20%" y="25%" width="150" height="100">
           <p
             xmlns="http://www.w3.org/1999/xhtml"
             className="circleText d-flex"

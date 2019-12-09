@@ -56,37 +56,38 @@ class LenderBuyButton extends React.Component {
       category: INITIATE_PURCHASE,
       action: this.props.name
     });
-    await this.initialize();
-    let web3;
-    if (
-      typeof window.ethereum !== 'undefined' ||
-      typeof window.web3 !== 'undefined'
-    ) {
-      const provider = window.ethereum || window.web3.currentProvider;
-      web3 = new Web3(provider);
-    }
-    const networkId = await web3.eth.net.getId();
-    let ens = web3.eth.ens;
-
-    await this.getGas();
-    if (networkId !== 1) {
-      alert(
-        'Sorry, you need to be on the Ethereum MainNet to use our services.'
-      );
-    } else {
-      const { contractAbi, contractAddress, gas, gasPrice } = contractProvider(
-        this.props.name
-      );
-      console.log(contractAddress);
-      const newAddress = await ens.getAddress(contractAddress);
-      const valueToInvest = this.state.value;
-      const contract = new web3.eth.Contract(contractAbi, newAddress);
-      this.setState({ showLoader: true });
-      let tx;
-      try {
+    try {
+      await this.initialize();
+      let web3;
+      if (
+        typeof window.ethereum !== 'undefined' ||
+        typeof window.web3 !== 'undefined'
+      ) {
+        const provider = window.ethereum || window.web3.currentProvider;
+        web3 = new Web3(provider);
+      }
+      const networkId = await web3.eth.net.getId();
+      const { ens } = web3.eth;
+      await this.getGas();
+      if (networkId !== 1) {
+        alert(
+          'Sorry, you need to be on the Ethereum MainNet to use our services.'
+        );
+      } else {
+        const {
+          contractAbi,
+          contractAddress,
+          gas,
+          gasPrice
+        } = contractProvider(this.props.name);
+        const newAddress = await ens.getAddress(contractAddress);
+        const valueToInvest = this.state.value;
+        const contract = new web3.eth.Contract(contractAbi, newAddress);
+        this.setState({ showLoader: true });
+        let tx;
         if (this.props.name === 'Lender') {
           tx = await contract.methods.SafeNotSorryZapInvestment();
-        } else if (this.props.name === 'ETH Maximalist') {
+        } else if (this.props.name === 'ETH Bull') {
           tx = await contract.methods.ETHMaximalistZAP();
         } else {
           tx = await contract.methods.LetsInvest();
@@ -113,10 +114,10 @@ class LenderBuyButton extends React.Component {
             );
             this.setState({ showLoader: false });
           });
-      } catch (error) {
-        console.log(error);
+        console.log(tx);
       }
-      console.log(tx);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -131,6 +132,7 @@ class LenderBuyButton extends React.Component {
     } catch (error) {
       console.error(error);
       alert('You will need to connect web3 wallet');
+      throw error;
     }
   }
 
@@ -146,7 +148,9 @@ class LenderBuyButton extends React.Component {
               <div className="buycontents">
                 <p className="buytext pt-4 mr-2">INVEST</p>
                 <input
-                  min="0"
+                  min={0.01}
+                  type="number"
+                  step={0.001}
                   value={value}
                   onChange={this.handleChange}
                   placeholder="0.0"
@@ -154,11 +158,11 @@ class LenderBuyButton extends React.Component {
                   style={
                     value && value.length > 3
                       ? {
-                        width: `${80 + value.length * 20}px`
-                      }
+                          width: `${90 + value.length * 20}px`
+                        }
                       : {
-                        width: '80px'
-                      }
+                          width: '90px'
+                        }
                   }
                 />
                 <p className="buytext pt-4 ml-2">ETH</p>
@@ -218,10 +222,11 @@ class LenderBuyButton extends React.Component {
   }
 
   render() {
-    const { isOrderable, name } = this.props;
+    const { isOrderable, name, block, size } = this.props;
     return (
-      <div>
+      <>
         {isOrderable ? (
+          // eslint-disable-next-line jsx-a11y/accessible-emoji
           <Button
             onClick={() => {
               this.setState({ open: true });
@@ -231,25 +236,25 @@ class LenderBuyButton extends React.Component {
               });
             }}
             disabled={!isOrderable}
-            variant="outline-success"
-            size="lg"
-            className="m-2"
+            variant="outline-primary"
+            size={!isEmpty(size) ? size : 'auto'}
+            block={block}
           >
-            Buy
+            ⚡ Use This Zap
           </Button>
         ) : (
-            <Button
-              onClick={() => this.setState({ open: true })}
-              disabled={!isOrderable}
-              variant="outline-success"
-              size="lg"
-              className="m-2"
-            >
-              Coming Soon
+          <Button
+            onClick={() => this.setState({ open: true })}
+            disabled={!isOrderable}
+            variant="outline-primary"
+            size={!isEmpty(size) ? size : 'auto'}
+            block={block}
+          >
+            Coming Soon
           </Button>
-          )}
+        )}
         {this.renderModal()}
-      </div>
+      </>
     );
   }
 }

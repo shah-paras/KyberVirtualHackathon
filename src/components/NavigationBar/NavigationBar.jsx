@@ -35,7 +35,7 @@ const NavigationBar = props => {
                 Explore Zaps
               </Button>
             </Navbar.Text>
-            <Navbar.Text>
+            {/* <Navbar.Text>
               <Button
                 variant="link"
                 href="/faq"
@@ -43,7 +43,7 @@ const NavigationBar = props => {
               >
                 FAQ
               </Button>
-            </Navbar.Text>
+            </Navbar.Text> */}
             <Navbar.Text>
               <Button
                 href="https://devpost.com/software/defi-zap"
@@ -66,12 +66,12 @@ const NavigationBar = props => {
             </Navbar.Text>
             <Navbar.Text>
               <Button
-                href="https://t.me/defizap"
+                href="https://discord.gg/h6CGbuN"
                 variant="link"
                 target="_blank"
                 className={styles.anchorSpacing}
               >
-                Telegram
+                Discord
               </Button>
             </Navbar.Text>
           </Nav>

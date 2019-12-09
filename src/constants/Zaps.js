@@ -393,7 +393,7 @@ const Zaps = {
   },
   unipoolsnx: {
     id: 'unipoolsnx',
-    name: 'SNX Unipool ',
+    name: 'SNX Unipool',
     text: 'Uni SNX',
     isOrderable: true,
     hasReturnsChart: true,

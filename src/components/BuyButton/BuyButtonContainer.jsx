@@ -62,6 +62,7 @@ class LenderBuyButton extends React.Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+
     registerEvent({
       category: INITIATE_PURCHASE,
       action: this.props.name
@@ -99,7 +100,10 @@ class LenderBuyButton extends React.Component {
           tx = await contract.methods.SafeNotSorryZapInvestment();
         } else if (this.props.name === 'ETH Bull') {
           tx = await contract.methods.ETHMaximalistZAP();
-        } else {
+        } else if(this.props.name === 'CHAI Unipool'){
+          tx = await contract.methods.LetsInvest(window.web3.currentProvider.selectedAddress)
+        }
+        else {
           tx = await contract.methods.LetsInvest();
         }
         tx.send({

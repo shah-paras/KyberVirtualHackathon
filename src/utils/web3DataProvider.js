@@ -8,7 +8,9 @@ import {
   UNIPOOL_MKR_CONTRACT_ADDRESS,
   UNIPOOL_SNX_CONTRACT_ADDRESS,
   UNIPOOL_SETH_CONTRACT_ADDRESS,
-  UNIPOOL_SAI_CONTRACT_ADDRESS
+  UNIPOOL_SAI_CONTRACT_ADDRESS,
+  UNIPOOL_CHAI_CONTRACT_ADDRESS
+
 } from '../web3/address';
 
 import LENDER_ABI from '../web3/abi';
@@ -21,6 +23,8 @@ import UNIPOOL_MKR_ABI from '../web3/unipoolMkrAbi';
 import UNIPOOL_SNX_ABI from '../web3/unipoolSnxAbi';
 import UNIPOOL_SETH_ABI from '../web3/unipoolSEthAbi';
 import UNIPOOL_SAI_ABI from '../web3/unipoolSaiAbi';
+import UNIPOOL_CHAI_ABI from '../web3/unipoolChaiAbi';
+
 
 const contractProvider = name => {
   switch (name) {
@@ -92,6 +96,13 @@ const contractProvider = name => {
       return {
         contractAbi: UNIPOOL_SAI_ABI,
         contractAddress: UNIPOOL_SAI_CONTRACT_ADDRESS,
+        gas: 1500000
+      };
+    }
+    case 'CHAI Unipool': {
+      return {
+        contractAbi: UNIPOOL_CHAI_ABI,
+        contractAddress: UNIPOOL_CHAI_CONTRACT_ADDRESS,
         gas: 1500000
       };
     }

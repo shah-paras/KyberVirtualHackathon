@@ -1,4 +1,53 @@
 const Zaps = {
+  unipoolchai: {
+    id: 'unipoolchai',
+    name: 'CHAI Unipool',
+    text: 'Uni CHAI',
+    isOrderable: true,
+    hasReturnsChart: true,
+    ensAddress: 'CHAIUnipool.DeFiZap.eth',
+    tokenAddress: '0x670577FEb18576C10F632b2e26976E659d1e5E33',
+    gasLimitRequirement:'1500000',
+    platformsUsed: [
+      {
+        key: 'uniswap',
+        value: 'Uniswap',
+        url: 'https://uniswap.io/',
+        color: '#AF2CE4'
+      }
+    ],
+    oneClickAccessTo: [{ text: 'Add Liquidity to generate fees', color:'#18722b' }],
+    numberOfInteractions: 5,
+    outperformsDuring: ['Choppy Markets'],
+    whatHappensUnderTheHood: '',
+    whatHappensAfter: '',
+    components: [
+      {
+        name: 'CHAI Pool token',
+        percent: 100,
+        color: '#ad7213'
+      }
+    ],
+    description: {
+      textQuestion: 'What does this Zap do?',
+      textAnswer: ['Sample text'],
+      textLink: [
+        {
+          text: 'dummy text',
+          hyperlink: 'https://google.com'
+        }
+      ],
+      tutorialLink:
+        'https://defitutorials.substack.com/p/chai-unipool-defizap-tutorial'
+    },
+    whatThisMeans: {
+      text: [
+        '50% converted to CHAI interest bearing token',
+        '50% left over input + acquired tokens are supplied to Uniswap pool to mint liquidity tracking tokens'
+      ]
+    },
+    metamaskInteractionsSaved: [{ saved: 5 }]
+  },
   unipooldai: {
     id: 'unipooldai',
     name: 'DAI Unipool',

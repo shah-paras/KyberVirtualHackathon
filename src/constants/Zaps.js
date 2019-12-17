@@ -6,7 +6,7 @@ const Zaps = {
     isOrderable: true,
     hasReturnsChart: true,
     ensAddress: 'CHAIUnipool.DeFiZap.eth',
-    tokenAddress: '0x670577FEb18576C10F632b2e26976E659d1e5E33',
+    tokenAddress: '0x6c3942b383bc3d0efd3f36efa1cbe7c8e12c8a2b ',
     gasLimitRequirement:'1500000',
     platformsUsed: [
       {

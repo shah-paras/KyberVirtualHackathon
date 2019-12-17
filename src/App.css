@@ -130,7 +130,26 @@ footer {
   width: 70px;
   font-size: 48px;
 }
+.sendcontents{
+  width: 100%;
+}
 
+.sendcontents input {
+  border-top: none;
+  border-right: none;
+  border-bottom: 3px solid rgb(43, 177, 96);
+  border-left: none;
+  border-image: initial;
+  color: rgb(43, 177, 96);
+  max-width: 100%;
+  overflow: hidden;
+  text-align: left;
+  width: 300px;
+  font-size: 20px;
+}
+.sendcontents input:focus {
+  outline: none;
+}
 .buycontents input:focus {
   outline: none;
 }

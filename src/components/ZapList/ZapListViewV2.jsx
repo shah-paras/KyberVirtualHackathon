@@ -17,6 +17,8 @@ import {
 } from '../../constants/googleAnalytics';
 import { registerEvent } from '../../api/googleAnalytics';
 import BuyButtonContainer from '../BuyButton/BuyButtonContainer';
+import GiftButtonContainer from '../GiftButton/GiftButtonContainer';
+
 
 const footerButtons = () => (
   <div className="row justify-content-center my-1">
@@ -77,7 +79,7 @@ const Zap = props => {
             </div>
           ) : null}
         </Col>
-        <Col xs={12} md={8}>
+        <Col xs={12} md={3}>
           {props.isOrderable ? null : (
             <>
               <h4>This Zap is still under development.</h4>
@@ -88,7 +90,7 @@ const Zap = props => {
             </>
           )}
           <Row className="text-center text-md-left" >
-            <Col xs={12} md={6} className="text-sm-center text-md-left">
+            <Col xs={12} md={10} className="text-sm-center text-md-left">
               {props.oneClickAccessTo ? (
                 <span>
                   <h6>1-click access to:</h6>
@@ -168,6 +170,7 @@ const Zap = props => {
                 </span>
               ) : null}
             </Col>
+            
           </Row>
 
           {/* {props.whatThisMeans ? (
@@ -183,6 +186,20 @@ const Zap = props => {
             </span>
           ) : null} */}
         </Col>
+        <Col xs={0} md={3}>
+        </Col>
+        <Col xs={12} md={2}>
+            <div className="mt-2">
+              <GiftButtonContainer
+                name={props.name}
+                isOrderable={props.isOrderable}
+                hasReturnsChart={props.hasReturnsChart}
+                ensAddress={props.ensAddress}
+                gasLimitRequirement={props.gasLimitRequirement}
+                block
+              />
+              </div>    
+            </Col>
       </Row>
       {/* <hr />
       <Row> */}

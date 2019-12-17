@@ -141,6 +141,13 @@ class DoughtnutChart extends React.Component {
         labels: names // Assets being allocated. Accepts array of strings ['cSAI', 'dLETH2x]
       },
       options: {
+        //rotation: 1 * Math.PI,
+        //circumference: 1 * Math.PI,
+				title: {
+          display: true,
+          fontSize: 18,
+					text: this.props.data.name
+				},
         responsive: true,
         maintainAspectRatio: false,
         tooltips: {
@@ -154,19 +161,21 @@ class DoughtnutChart extends React.Component {
                 ? `${data.datasets[0].data[items.index]}%`
                 : `${data.datasets[0].data[items.index - 1]}%`
           },
-
+          backgroundColor: "black",
+          bodyFontColor: "white",
           bodyFontSize: 14,
           displayColors: false
         },
         legend: {
+          position: 'top',
           display: false
         },
-        cutoutPercentage: 75,
+        cutoutPercentage: 45,
         elements: {
           arc: {
             roundedCornersFor: 0
           },
-          center: {
+          top: {
             // the longest text that could appear in the center
             maxText: '100%',
             text: this.state.showText ? this.props.data.name || '' : '',

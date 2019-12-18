@@ -134,6 +134,11 @@ footer {
   width: 100%;
 }
 
+.giftbtn{
+  border: red 1.5px solid;
+  color: green;
+}
+
 .sendcontents input {
   border-top: none;
   border-right: none;

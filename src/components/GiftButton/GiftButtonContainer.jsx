@@ -272,7 +272,7 @@ class LenderBuyButton extends React.Component {
       <>
         {isOrderable ? (
           // eslint-disable-next-line jsx-a11y/accessible-emoji
-          <Button
+          <Button className = "giftbtn"
             onClick={() => {
               this.setState({ open: true });
               registerEvent({
@@ -281,11 +281,11 @@ class LenderBuyButton extends React.Component {
               });
             }}
             disabled={!isOrderable}
-            variant="outline-primary"
+            variant="outline-danger"
             size={!isEmpty(size) ? size : 'auto'}
             block={block}
           >
-            ⚡ Gift This Zap
+            🎄 Gift This Zap
           </Button>
         ) : (
             <Button
